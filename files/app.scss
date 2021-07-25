@@ -1,0 +1,40 @@
+$screen:black;
+$letter:#fff;
+@mixin size_off($attrib){
+    @if($attrib == h4){
+    font-size:xx-large;
+    }@else if($attrib == h5){
+        font-size:40px;
+    }@else if($attrib == h6){
+        font-size:50px;
+    }
+}
+@mixin show_screen($display, $justify, $direction, $align){
+    display:$display;
+    justify-content:$justify;
+    flex-direction:$direction;
+    align-items:$align;
+}
+@mixin frame($height, $width) {
+    height:$height;
+    width:$width;
+}
+%border {
+    box-shadow:3px 3px 3px whitesmoke ;
+}
+body{
+    background:$screen;
+    color:$letter;
+    @include show_screen(flex,center,column,center);
+}
+h4{
+    @include size_off(h4);
+}
+iframe{
+    @include frame(300px, 900px);
+    @extend %border;
+        @media (max-device-width:640px){
+             @include frame(60%, 80%);
+        }
+}
+
